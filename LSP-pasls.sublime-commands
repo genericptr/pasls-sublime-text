@@ -1,0 +1,18 @@
+[
+  {
+    "caption": "LSP-pasls: Complete Code",
+    "command": "lsp_execute",
+    "args": {
+      "session_name": "LSP-pasls",
+      "command_name": "pasls.completeCode",
+    }
+  },
+  {
+    "caption": "LSP-pasls: Format Code",
+    "command": "lsp_execute",
+    "args": {
+      "session_name": "LSP-pasls",
+      "command_name": "pasls.formatCode"
+    }
+  }
+]
