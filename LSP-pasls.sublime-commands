@@ -1,5 +1,13 @@
 [
   {
+    "caption": "Preferences: LSP-pasls Settings",
+    "command": "edit_settings",
+    "args": {
+      "base_file": "${packages}/LSP-pasls/LSP-pasls.sublime-settings",
+      "default": "{\n\t$0\n}\n"
+    }
+  },
+  {
     "caption": "LSP-pasls: Complete Code",
     "command": "lsp_execute",
     "args": {
