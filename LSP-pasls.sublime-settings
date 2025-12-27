@@ -48,7 +48,10 @@
     "maximumCompletions": 100,
 
     // Preferred method to handle overloaded functions in document symbol requests
-    "overloadPolicy": 1,
+    // 1: Duplicate function names appear in the list
+    // 2: After the original definition ignore others
+    // 3: Add a suffix which denotes the overload count
+    "overloadPolicy": 3,
 
     // Insert procedure completions with parameters as snippets
     "insertCompletionsAsSnippets": true,
@@ -61,6 +64,10 @@
 
     // Add workspace folders to include paths (-Fi)
     "includeWorkspaceFoldersAsIncludePaths": true,
+
+    // Workspace folder paths to exclude from workspace path collection
+    // Example: ["/path/to/workspace/node_modules", "/path/to/workspace/vendor"]
+    "excludeWorkspaceFolders": [],
 
     // Check syntax when file opens or saves
     "checkSyntax": true,
