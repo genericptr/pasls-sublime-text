@@ -99,6 +99,9 @@ class PascalLanguageServer(AbstractPlugin):
                 latest_tag = data.get("tag_name", "")
                 installed_version = cls.get_installed_version()
                 return latest_tag != installed_version
+        except urllib.error.HTTPError as e:
+            print("{}: Failed to check for updates from {}: HTTP {} {}".format(cls.name(), GITHUB_API_URL, e.code, e.reason))
+            return False
         except Exception as e:
             print("{}: Failed to check for updates: {}".format(cls.name(), e))
             return False
@@ -108,6 +111,7 @@ class PascalLanguageServer(AbstractPlugin):
         """Install or update the language server."""
         try:
             # Get release information
+            print("{}: Fetching release information from {}".format(cls.name(), GITHUB_API_URL))
             with urllib.request.urlopen(GITHUB_API_URL, timeout=30) as response:
                 data = json.loads(response.read().decode("utf-8"))
 
@@ -175,14 +179,17 @@ class PascalLanguageServer(AbstractPlugin):
                         "Please install pasls manually and set manageBinary to false.".format(release_platform, release_arch)
                     )
 
-            print("{}: Downloading from {}".format(cls.name(), asset_url))
+            print("{}: Downloading binary from {}".format(cls.name(), asset_url))
 
             # Download the binary
             os.makedirs(cls.basedir(), exist_ok=True)
             temp_path = cls.server_path() + ".tmp"
 
-            with urllib.request.urlopen(asset_url, timeout=300) as response:
-                data_bytes = response.read()
+            try:
+                with urllib.request.urlopen(asset_url, timeout=300) as response:
+                    data_bytes = response.read()
+            except urllib.error.HTTPError as e:
+                raise Exception("Failed to download binary from {}: HTTP {} {}".format(asset_url, e.code, e.reason))
 
             # Check if it's gzipped
             if asset_url.endswith(".gz"):
@@ -206,6 +213,9 @@ class PascalLanguageServer(AbstractPlugin):
 
             print("{}: Successfully installed version {}".format(cls.name(), tag_name))
 
+        except urllib.error.HTTPError as e:
+            print("{}: Installation failed: HTTP {} {} - {}".format(cls.name(), e.code, e.reason, e.url if hasattr(e, 'url') else ''))
+            raise Exception("Failed to download latest {}".format(cls.name()))
         except Exception as e:
             print("{}: Installation failed: {}".format(cls.name(), e))
-            raise
+            raise Exception("Failed to download latest {}".format(cls.name()))
