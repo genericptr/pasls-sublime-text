@@ -3,6 +3,7 @@
 
   // Automatically download and manage the binary from GitHub releases.
   // Set to false if you want to use a manually installed binary.
+  // This must be set from global settings file.
   "manageBinary": true,
 
   // The command to run the language server.
