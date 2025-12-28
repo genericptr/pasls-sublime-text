@@ -6,13 +6,13 @@
         "id": "package-settings",
         "children": [
           {
-            "caption": "LSP-pasls",
+            "caption": "PasLS",
             "children": [
               {
                 "caption": "Settings",
                 "command": "edit_settings",
                 "args": {
-                  "base_file": "${packages}/LSP-pasls/LSP-pasls.sublime-settings",
+                  "base_file": "${packages}/PasLS/PasLS.sublime-settings",
                   "default": "{\n\t$0\n}\n"
                 }
               }

@@ -32,7 +32,7 @@ class PascalLanguageServer(AbstractPlugin):
     @classmethod
     def name(cls):
         """Return the plugin name."""
-        return "LSP-pasls"
+        return "PasLS"
 
     @classmethod
     def basedir(cls):
@@ -85,7 +85,7 @@ class PascalLanguageServer(AbstractPlugin):
     def needs_update_or_installation(cls):
         """Check if the language server needs to be installed or updated."""
         settings, _ = cls.configuration()
-        if not settings.get("managePaslsBinary", True):
+        if not settings.get("manageBinary", True):
             return False
 
         # Check if binary exists
@@ -172,7 +172,7 @@ class PascalLanguageServer(AbstractPlugin):
                 else:
                     raise Exception(
                         "No suitable binary found for {}-{}. "
-                        "Please install pasls manually and set managePaslsBinary to false.".format(release_platform, release_arch)
+                        "Please install pasls manually and set manageBinary to false.".format(release_platform, release_arch)
                     )
 
             print("{}: Downloading from {}".format(cls.name(), asset_url))

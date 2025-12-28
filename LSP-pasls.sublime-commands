@@ -1,25 +1,25 @@
 [
   {
-    "caption": "Preferences: LSP-pasls Settings",
+    "caption": "Preferences: PasLS Settings",
     "command": "edit_settings",
     "args": {
-      "base_file": "${packages}/LSP-pasls/LSP-pasls.sublime-settings",
+      "base_file": "${packages}/PasLS/PasLS.sublime-settings",
       "default": "{\n\t$0\n}\n"
     }
   },
   {
-    "caption": "LSP-pasls: Complete Code",
+    "caption": "PasLS: Complete Code",
     "command": "lsp_execute",
     "args": {
-      "session_name": "LSP-pasls",
+      "session_name": "PasLS",
       "command_name": "pasls.completeCode",
     }
   },
   {
-    "caption": "LSP-pasls: Format Code",
+    "caption": "PasLS: Format Code",
     "command": "lsp_execute",
     "args": {
-      "session_name": "LSP-pasls",
+      "session_name": "PasLS",
       "command_name": "pasls.formatCode"
     }
   }

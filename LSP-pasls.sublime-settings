@@ -1,14 +1,14 @@
 {
   // User-level settings. Can be overridden in project-specific settings.
 
-  // Automatically download and manage the pasls binary from GitHub releases.
+  // Automatically download and manage the binary from GitHub releases.
   // Set to false if you want to use a manually installed binary.
-  "managePaslsBinary": true,
+  "manageBinary": true,
 
   // The command to run the language server.
-  // If managePaslsBinary is true, the binary will be automatically downloaded
+  // If manageBinary is true, the binary will be automatically downloaded
   // and ${server_path} will point to it.
-  // If managePaslsBinary is false, you must provide the full path to the pasls binary.
+  // If manageBinary is false, you must provide the full path to the pasls binary.
   "command": [
     "${server_path}"
     // For manual installation, replace ${server_path} with your binary path:
