@@ -43,23 +43,18 @@ You must set up the required environment variables for the Pascal compiler. The 
 
 ### Global Configuration
 
-1. Open Sublime Text preferences: `Preferences > Package Settings > LSP > Settings`
-2. Add your configuration under the `clients` section:
+1. Open Sublime Text preferences: `Preferences > Package Settings > PasLS > Settings`
+2. Configure your environment variables in the user settings:
 
 **Automatic Binary Management (Default):**
 ```json
 {
-  "clients": {
-    "PasLS": {
-      "enabled": true,
-      "env": {
-        "FPCDIR": "/usr/local/share/fpcsrc",
-        "FPCTARGET": "darwin",
-        "FPCTARGETCPU": "x86_64",
-        "LAZARUSDIR": "/usr/share/lazarus",
-        "PP": "/usr/local/lib/fpc/3.2.2/ppcx64"
-      }
-    }
+  "env": {
+    "FPCDIR": "/usr/local/share/fpcsrc",
+    "FPCTARGET": "darwin",
+    "FPCTARGETCPU": "x86_64",
+    "LAZARUSDIR": "/usr/share/lazarus",
+    "PP": "/usr/local/lib/fpc/3.2.2/ppcx64"
   }
 }
 ```
@@ -67,22 +62,21 @@ You must set up the required environment variables for the Pascal compiler. The 
 **Manual Binary Management:**
 ```json
 {
-  "clients": {
-    "PasLS": {
-      "enabled": true,
-      "manageBinary": false,
-      "command": ["/path/to/pascal-language-server/pasls"],
-      "env": {
-        "FPCDIR": "/usr/local/share/fpcsrc",
-        "FPCTARGET": "darwin",
-        "FPCTARGETCPU": "x86_64",
-        "LAZARUSDIR": "/usr/share/lazarus",
-        "PP": "/usr/local/lib/fpc/3.2.2/ppcx64"
-      }
-    }
+  "manageBinary": false,
+  "command": ["/path/to/pascal-language-server/pasls"],
+  "env": {
+    "FPCDIR": "/usr/local/share/fpcsrc",
+    "FPCTARGET": "darwin",
+    "FPCTARGETCPU": "x86_64",
+    "LAZARUSDIR": "/usr/share/lazarus",
+    "PP": "/usr/local/lib/fpc/3.2.2/ppcx64"
   }
 }
 ```
+
+You can also use the Command Palette: `Preferences: PasLS Settings`
+
+**Note:** Do not configure PasLS in `Preferences > Package Settings > LSP > Settings` under the `clients` section. That section is only for language servers that don't have their own package.
 
 ### Project-Specific Configuration
 
